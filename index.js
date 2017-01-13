@@ -3,7 +3,8 @@ const
 	bodyParser = require('body-parser'),
 	csv=require('csvtojson'),
 	multiparty = require('connect-multiparty'),
-	ulpload = require('./routes/upload'),	
+	ulpload = require('./routes/upload'),
+	mainDb = require('./db/main')	
 	app = express();
 
 const
@@ -26,3 +27,4 @@ const
 
 	//Rotas
 	app.post('/api/upload',multiparty(), ulpload.recebe);
+	app.get('/db/criate',mainDb.criaDB);

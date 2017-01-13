@@ -1,6 +1,7 @@
 const
 	fs = require('fs'),
-	csv=require('csvtojson');
+	csv=require('csvtojson'),
+	mainDb = require('../db/main');
   
 module.exports.recebe = _recebe;
 
@@ -42,6 +43,7 @@ function readCSV(caminhoArquivo){
 	csv()
 	.fromFile(csvFilePath)
 	.on('json',(jsonObj)=>{
+		mainDb.setDB(jsonObj);
    	console.log(jsonObj);
 	})
 	.on('done',(error)=>{
